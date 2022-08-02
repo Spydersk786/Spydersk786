@@ -96,7 +96,7 @@ class assignment1que1 {
             }
         }
         if(index==-1)
-            System.out.println("not found!");
+            System.out.println("not found!!");
         else
             System.out.println("Element found at index "+index);
     }
