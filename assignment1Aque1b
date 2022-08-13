@@ -1,10 +1,10 @@
 import java.util.Scanner;
-class Main {
+class assignment {
     public static void main(String[] args) {
         System.out.println("enter the order of square matrix");
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int elements=(n*n+n)/2;
+        int elements=3*n-2;
         int arr[]=new int[elements];
         System.out.println("Enter the elements");
         for(int i=0;i<elements;i++)
@@ -14,14 +14,14 @@ class Main {
         {
             for(int j=0;j<n;j++)
             {
-                if(j>i)
+                if(i>j+1||j>i+1)
                 {
-                    System.out.print(arr[i+j]+" ");
+                	System.out.print("0 ");
                 }
                 else
                 {
-                    System.out.print(arr[k]+" ");
-                    k++;
+                	System.out.print(arr[k]+" ");
+                	k++;
                 }
             }
             System.out.println();
