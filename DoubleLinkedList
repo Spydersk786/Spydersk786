@@ -1,0 +1,168 @@
+public class LinkedList{
+	node head;
+	node tail;
+	int size=0;
+	class node{
+		String data;
+		node next;
+		node prev;
+		node(String data)
+		{
+			this.data=data;
+			this.next=null;
+			this.prev=null;
+		}
+	}
+	
+	public void addfirst(String data)
+	{
+		node newnode=new node(data);
+		size++;
+		if(head==null)
+		{
+			head=newnode;
+			tail=newnode;
+			return;
+		}
+		newnode.next=head;
+		head.prev=newnode;
+		head=newnode;
+	}
+	
+	public void addlast(String data)
+	{
+		node newnode=new node(data);
+		size++;
+		if(head==null)
+		{
+			head=newnode;
+			tail=newnode;
+			return;
+		}
+		tail.next=newnode;
+		newnode.prev=tail;
+		tail=newnode;
+	}
+	public void insert(String data,int index)
+	{
+		if(head==null)
+		{
+			node newnode=new node(data);
+			head=newnode;
+			tail=newnode;
+			size++;
+			return;
+		}
+		if(index<=size)
+		{
+			node newnode=new node(data);
+			size++;
+			if(index==0)
+			{
+				newnode.next=head;
+				head.prev=newnode;
+				head=newnode;
+				return;
+			}
+			node temp=head;
+			for(int i=0;i<index-1;i++)
+			{
+				temp=temp.next;
+			}
+			newnode.prev=temp;
+			newnode.next=temp.next;
+			temp.next.prev=newnode;
+			temp.next=newnode;
+		}
+		else
+		{
+			System.out.println("index invalid");
+		}
+	}
+	
+	public int getsize(){
+		return size;
+	}
+	
+	public void print(){
+		if(head==null)
+		{
+			System.out.println("empty list");
+			return;
+		}
+		node curr=head;
+		while(curr!=null){
+			System.out.print(curr.data+" ");
+			curr=curr.next;
+		}
+	}
+	
+	public void deletefirst(){
+		if(head==null)
+		{
+			System.out.println("empty list");
+			return;
+		}
+		size--;
+		head=head.next;
+		head.prev=null;
+	}
+	
+	public void deletelast()
+	{
+		if(head==null)
+		{
+			System.out.println("empty list");
+			return;
+		}
+		size--;
+		tail.prev.next=null;
+		tail=tail.prev;
+	}
+	
+	public void remove(int index){
+		if(head==null)
+		{
+			System.out.println("empty list");
+			return;
+		}
+		if(index<size)
+		{
+			size--;
+			if(index==0)
+			{
+				head=head.next;
+				head.prev=null;
+				return;
+			}
+			node last=head.next;
+			node secondlast=head;
+			for(int i=0;i<index-1;i++)
+			{
+				last=last.next;
+				secondlast=secondlast.next;
+			}
+			if(last.next!=null)
+			last.next.prev=last.prev;
+			secondlast.next=last.next;
+		}
+		else
+		{
+			System.out.println("invalid index");
+		}
+	}
+	
+	public static void main(String args[]){
+		LinkedList linkedlist=new LinkedList();
+		linkedlist.addfirst("b");
+		linkedlist.addfirst("a");
+		linkedlist.addlast("d");
+		linkedlist.addlast("e");
+		linkedlist.insert("c",2);
+		linkedlist.deletefirst();
+		linkedlist.deletelast();
+		linkedlist.remove(0);
+		System.out.println(linkedlist.getsize());
+		linkedlist.print();
+	}
+}
