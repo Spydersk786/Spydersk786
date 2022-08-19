@@ -90,6 +90,7 @@ public class LinkedList{
 			System.out.print(curr.data+" ");
 			curr=curr.next;
 		}
+		System.out.println();
 	}
 	
 	public void deletefirst(){
@@ -168,17 +169,59 @@ public class LinkedList{
 		System.out.println("Not found");
 	}
 	
+	public void deleteoccurrences(){
+		System.out.println("enter the string whose occurrences are to be deleted");
+		Scanner sc=new Scanner(System.in);
+		String key=sc.next();
+		node curr=head;
+		for(int i=0;i<size;)
+		{
+			if(key.compareTo(curr.data)==0)
+			{
+				remove(i);
+			}
+			else
+			{
+			i++;
+			}
+			curr=curr.next;
+		}
+	}
+		public void middle(){
+			int mid=size/2;
+			System.out.println(get(mid));
+		}
+		
+		public String get(int index){
+			node curr=head;
+			for(int i=0;i<size;i++)
+			{
+				if(i==index)
+					return curr.data;
+				else
+					curr=curr.next;
+			}
+			return "Wrong input";
+		}
+	
 	public static void main(String args[]){
 		LinkedList linkedlist=new LinkedList();
 		linkedlist.addfirst("d");
 		linkedlist.addfirst("b");
 		linkedlist.addfirst("a");
 		linkedlist.insert("c",2);
-		linkedlist.addlast("e");
-		linkedlist.deletelast();
-		linkedlist.remove(3);
+//		linkedlist.addlast("e");
+//		linkedlist.deletelast();
+//		linkedlist.remove(3);
+//		linkedlist.print();
+//		System.out.println("\nsize="+linkedlist.getsize());
+//		linkedlist.search();
+//		linkedlist.insert("b",3);
+//		linkedlist.insert("b",4);
+//		linkedlist.print();
+//		linkedlist.deleteoccurrences();
 		linkedlist.print();
-		System.out.println("\nsize="+linkedlist.getsize());
-		linkedlist.search();
+		linkedlist.middle();
+		linkedlist.reverse();
 	}
 }
