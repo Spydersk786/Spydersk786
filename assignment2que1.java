@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.lang.String;
 public class LinkedList{
 	node head;
 	int size=0;
@@ -146,6 +148,26 @@ public class LinkedList{
 		}
 	}
 	
+	public void search(){
+		System.out.println("enter the string to search");
+		Scanner sc=new Scanner(System.in);
+		String key=sc.next();
+		node curr=head;
+		for(int i=0;i<size;i++)
+		{
+			if(key.compareTo(curr.data)==0)
+			{
+				System.out.println("found at "+i);
+				return;
+			}
+			else
+			{
+				curr=curr.next;
+			}
+		}
+		System.out.println("Not found");
+	}
+	
 	public static void main(String args[]){
 		LinkedList linkedlist=new LinkedList();
 		linkedlist.addfirst("d");
@@ -157,5 +179,6 @@ public class LinkedList{
 		linkedlist.remove(3);
 		linkedlist.print();
 		System.out.println("\nsize="+linkedlist.getsize());
+		linkedlist.search();
 	}
 }
