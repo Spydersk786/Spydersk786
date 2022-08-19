@@ -42,6 +42,12 @@ public class LinkedList{
 	}
 	public void insert(String data,int index)
 	{
+		if(head==null)
+		{
+			node newnode=new node(data);
+			head=newnode;
+			return;
+		}
 		if(index<=size)
 		{
 			node newnode=new node(data);
