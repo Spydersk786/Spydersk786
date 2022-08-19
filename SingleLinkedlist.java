@@ -46,6 +46,7 @@ public class LinkedList{
 		{
 			node newnode=new node(data);
 			head=newnode;
+			size++;
 			return;
 		}
 		if(index<=size)
