@@ -126,7 +126,7 @@ public class LinkedList{
 			System.out.println("empty list");
 			return;
 		}
-		if(index<=size)
+		if(index<size)
 		{
 			size--;
 			if(index==0)
